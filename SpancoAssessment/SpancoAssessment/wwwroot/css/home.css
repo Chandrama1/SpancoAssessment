@@ -1,0 +1,30 @@
+﻿body {
+    font-family: Graphik;
+}
+
+.dvContainer {
+    font-size: 0.9em;
+}
+
+.clsField {
+    padding: 0.5em 0 0.5em;
+}
+
+.radioBtn
+{
+    padding: 0 !important;
+}
+
+.radio {
+    margin-right: 0.5vw;
+    cursor: pointer;
+}
+
+.lblCheckBoxAdd {
+    font-size: 0.9em;
+    margin-left: 1.5vw;
+}
+
+.btnSave {
+    padding: 0.5vw 3vw;
+}

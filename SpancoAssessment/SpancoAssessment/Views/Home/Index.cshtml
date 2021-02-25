@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Models.FormFields
+
+<script src="~/js/home.js"></script>
+<link href="~/css/home.css" rel="stylesheet" />
+
+<div class="text-left dvContainer">
+    <form asp-controller="Home" asp-action="SavePatientDetails" method="post" enctype="multipart/form-data" class="container" id="formPatient">
+        <div class="row clsField form-group">
+            <label asp-for="FirstName" class="col-4">Patient FirstName:<span class="text-danger">*</span></label>
+            <input asp-for="FirstName" class="col-4 form-control" id="firstName" type="text" maxlength="50" required />
+        </div>
+        <div class="row clsField form-group">
+            <label asp-for="MiddleName" class="col-4">Patient MiddleName:</label>
+            <input asp-for="MiddleName" class="col-4 form-control" id="middleName" type="text" maxlength="50" />
+        </div>
+        <div class="row clsField form-group">
+            <label asp-for="LastName" class="col-4">Patient LastName:</label>
+            <input asp-for="LastName" class="col-4 form-control" id="lastName" type="text" maxlength="50" />
+        </div>
+        <div class="row clsField">
+            <label asp-for="Gender" class="col-4">Gender:<span class="text-danger">*</span></label>
+            <div class="col-4 form-check-inline">
+                <label class="col-3 form-check-label radioBtn" for="male">
+                    <input id="male" value="Male" asp-for="Gender" class="form-check-input radio" type="radio" name="gender" required />Male
+                </label>
+                <label class="col-3 form-check-label radioBtn" for="female">
+                    <input id="female" value="Female" asp-for="Gender" class="form-check-input radio" type="radio" name="gender" required />Female
+                </label>
+                <label class="col-3 form-check-label radioBtn" for="others">
+                    <input id="others" value="Others" asp-for="Gender" class="form-check-input radio" type="radio" name="gender" required />Others
+                </label>
+            </div>
+        </div>
+        <div class="row clsField form-group">
+            <label asp-for="DateOfBirth" class="col-4">DOB:<span class="text-danger">*</span></label>
+            <input asp-for="DateOfBirth" class="col-2 form-control" id="inpDoB" type="date" min="1870-01-01" onchange="getAge();" required />
+        </div>
+        <div class="row clsField form-group">
+            <label class="col-4">Age:</label>
+            <input class="clsTxtBoxAge col-4 form-control" id="inpAge" type="text" disabled />
+        </div>
+        <div class="row clsField">
+            <label asp-for="CaseType" class="col-4">Case Type:<span class="text-danger">*</span></label>
+            <div class="col-4 form-check-inline">
+                <label class="col-4 form-check-label radioBtn" for="normal">
+                    <input asp-for="CaseType" id="normal" value="Normal" class="form-check-input radio" onchange="ValidateCaseType();" type="radio" name="case-type" required />Normal
+                </label>
+                <label class="col-4 form-check-label radioBtn" for="mlc">
+                    <input asp-for="CaseType" id="mlc" value="MLC" class="form-check-input radio" onchange="ValidateCaseType();" type="radio" name="case-type" required />MLC
+                </label>
+            </div>
+        </div>
+        <div class="row clsField form-group">
+            <label asp-for="PoliceEnquiryRemark" class="col-4">Police Enquiry Remark:</label>
+            <textarea id="policeEnqRemark" asp-for="PoliceEnquiryRemark" class="form-control col-4" rows="3" maxlength="200"></textarea>
+        </div>
+        <div class="row clsField form-group">
+            <label asp-for="PresentAddress" class="col-4">Present Address:</label>
+            <textarea asp-for="PresentAddress" id="preAdd" onkeypress="updatePermAdd();" class="form-control col-4" rows="3" maxlength="200"></textarea>
+        </div>
+        <div class="row clsField form-group">
+            <div class="col-4">
+                <label asp-for="PermanentAddress">Permanent Address:</label><br />
+                <label class="form-check-label lblCheckBoxAdd">
+                    <input type="checkbox" class="form-check-input checkBoxAdd">
+                    <i>Permanent Address same as Present Address</i>
+                </label>
+            </div>
+            <textarea asp-for="PermanentAddress" id="permAdd" onkeypress="updatePreAdd();" class="form-control col-4" rows="3" maxlength="200"></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btnSave">SAVE</button>
+        </div>
+    </form>
+</div>
