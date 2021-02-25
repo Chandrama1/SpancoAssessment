@@ -9,7 +9,6 @@ namespace DataAccess
 {
     public class SaveData : ISaveData
     {
-        private readonly IConfiguration _configuration;
         private readonly IConnectToDb _dbObj;
 
         public SaveData(IConfiguration configuration)
